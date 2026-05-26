@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAFÉ NOKA | 群馬県沼田市</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f0e8;
+    --bg2: #ede7db;
+    --surface: #ffffff;
+    --surface2: #faf7f2;
+    --text: #2c2416;
+    --text-mid: #6b5c45;
+    --text-muted: #a8947a;
+    --green: #4a6741;
+    --green-light: #6a8f62;
+    --green-pale: #e8f0e5;
+    --brown: #7c5c3a;
+    --brown-light: #a07850;
+    --cream: #f9f4ec;
+    --rule: #ddd4c0;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 48px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    color: var(--text);
+  }
+
+  .logo-text small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--text-muted);
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-top: 1px;
+  }
+
+  nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  nav a {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--green); }
+
+  .nav-order {
+    background: var(--green) !important;
+    color: var(--white) !important;
+    padding: 9px 22px;
+    font-size: 11px !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-order:hover { background: var(--green-light) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 68px;
+  }
+
+  .hero-left {
+    background: var(--bg);
+    padding: 80px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 植物装飾 */
+  .hero-plant {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    font-size: 180px;
+    opacity: 0.06;
+    transform: rotate(-20deg);
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .hero-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--green);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(52px, 6vw, 84px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.4s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--green);
+  }
+
+  .hero-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.6s forwards;
+  }
+
+  .hero-desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 2.2;
+    max-width: 380px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.8s forwards;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeUp 0.7s 1s forwards;
+  }
+
+  .btn-green {
+    background: var(--green);
+    color: var(--white);
+    padding: 13px 32px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    transition: background 0.2s;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .btn-green:hover { background: var(--green-light); }
+
+  .btn-line {
+    border-bottom: 1px solid var(--text-mid);
+    color: var(--text-mid);
+    padding: 13px 0;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .btn-line:hover {
+    border-color: var(--green);
+    color: var(--green);
+  }
+
+  .hero-right {
+    background: var(--bg2);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+
+  .hero-img-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+    padding: 80px 48px 0;
+  }
+
+  .img-block {
+    background: var(--surface2);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .img-block:nth-child(1) {
+    grid-column: 1 / 3;
+    aspect-ratio: 2/1;
+    font-size: 56px;
+    background: var(--bg2);
+    border: 2px solid var(--rule);
+  }
+
+  .img-block:nth-child(2),
+  .img-block:nth-child(3) {
+    aspect-ratio: 1;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+  }
+
+  .img-label {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .hero-badge {
+    margin: 24px 48px 48px;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 20px 24px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.7s 1.2s forwards;
+  }
+
+  .badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .badge-item + .badge-item {
+    border-left: 1px solid var(--rule);
+  }
+
+  .badge-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--green);
+    line-height: 1;
+  }
+
+  .badge-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 80px; }
+
+  .tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--green);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--green);
+  }
+
+  .section-lead {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 2.2;
+    max-width: 520px;
+  }
+
+  .inner { max-width: 1100px; margin: 0 auto; }
+
+  /* ── MENU ── */
+  .menu-section {
+    background: var(--white);
+  }
+
+  .menu-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 64px;
+    align-items: end;
+  }
+
+  /* カテゴリ切り替え風タブ */
+  .cat-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .cat-tab {
+    padding: 8px 20px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    border: 1px solid var(--rule);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+  }
+
+  .cat-tab.active {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--white);
+  }
+
+  .menu-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .menu-card {
+    background: var(--bg);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid var(--rule);
+  }
+
+  .menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(44,36,22,0.1);
+  }
+
+  .menu-card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--bg2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu-card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(245,240,232,0.4), transparent);
+  }
+
+  .menu-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--green);
+    color: var(--white);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    padding: 3px 10px;
+    z-index: 1;
+  }
+
+  .menu-card-body {
+    padding: 20px 20px 24px;
+  }
+
+  .menu-card-cat {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--green);
+    font-family: 'Cormorant Garamond', serif;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .menu-card-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .menu-card-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  .menu-card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--brown);
+  }
+
+  .menu-card-price small {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  /* ── CONCEPT ── */
+  .concept {
+    background: var(--bg);
+  }
+
+  .concept-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .concept-blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .c-block {
+    padding: 32px 24px;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .c-block:first-child {
+    grid-column: 1 / 3;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 28px;
+  }
+
+  .c-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+
+  .c-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .c-body {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
+
+  .concept-text {}
+
+  .concept-points {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .point {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: flex-start;
+  }
+
+  .point-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--rule);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+    transition: color 0.2s;
+  }
+
+  .point:hover .point-num { color: var(--green-light); }
+
+  .point-text {}
+
+  .point-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .point-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
+
+  /* ── GALLERY ── */
+  .gallery {
+    background: var(--bg2);
+    padding: 80px;
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .gallery-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 200px 200px;
+    gap: 8px;
+  }
+
+  .g-cell {
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    position: relative;
+    transition: opacity 0.2s;
+  }
+
+  .g-cell:hover { opacity: 0.85; }
+
+  .g-cell:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    font-size: 72px;
+    background: var(--bg);
+  }
+
+  .g-cell:nth-child(3) { grid-column: 3; grid-row: 1; }
+  .g-cell:nth-child(4) { grid-column: 4; grid-row: 1; background: var(--green-pale); }
+  .g-cell:nth-child(5) { grid-column: 3; grid-row: 2; background: var(--surface2); }
+  .g-cell:nth-child(6) { grid-column: 4; grid-row: 2; }
+
+  .g-label {
+    position: absolute;
+    bottom: 8px;
+    left: 12px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* ── ACCESS ── */
+  .access {
+    background: var(--white);
+  }
+
+  .access-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .access-rows {
+    margin-top: 40px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .access-row {
+    display: flex;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 13px;
+    align-items: flex-start;
+  }
+
+  .access-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--green);
+    min-width: 72px;
+    padding-top: 3px;
+    text-transform: uppercase;
+  }
+
+  .access-val {
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  .map-box {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--bg2);
+    border: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    margin-top: 40px;
+  }
+
+  /* ── RESERVE ── */
+  .reserve {
+    background: var(--green);
+    padding: 80px;
+    text-align: center;
+  }
+
+  .reserve-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .reserve .tag { color: rgba(255,255,255,0.6); }
+  .reserve .section-title { color: var(--white); }
+
+  .reserve-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    line-height: 2;
+    margin-bottom: 40px;
+  }
+
+  .reserve-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--green);
+    padding: 13px 32px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .btn-white:hover { opacity: 0.85; }
+
+  .btn-white-line {
+    border: 1px solid rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.8);
+    padding: 13px 32px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .btn-white-line:hover {
+    border-color: var(--white);
+    color: var(--white);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    padding: 56px 80px;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 32px;
+  }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--white);
+    letter-spacing: 0.2em;
+  }
+
+  .footer-logo small {
+    display: block;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.35);
+    font-weight: 300;
+    margin-top: 6px;
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-nav a {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-nav a:hover { color: rgba(255,255,255,0.9); }
+
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    header { padding: 0 20px; }
+    nav { display: none; }
+
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 64px 28px; min-height: 80vh; }
+    .hero-right { display: none; }
+
+    section { padding: 72px 24px; }
+    .gallery { padding: 72px 24px; }
+    .reserve { padding: 72px 24px; }
+
+    .menu-header { grid-template-columns: 1fr; gap: 24px; }
+    .menu-cards { grid-template-columns: 1fr; }
+
+    .concept-inner { grid-template-columns: 1fr; gap: 48px; }
+    .concept-blocks { display: none; }
+
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 160px);
+    }
+    .g-cell:nth-child(1) { grid-column: 1 / 3; grid-row: 1; font-size: 48px; }
+    .g-cell:nth-child(3) { grid-column: 1; grid-row: 2; }
+    .g-cell:nth-child(4) { grid-column: 2; grid-row: 2; }
+    .g-cell:nth-child(5) { grid-column: 1; grid-row: 3; }
+    .g-cell:nth-child(6) { grid-column: 2; grid-row: 3; }
+
+    .access-inner { grid-template-columns: 1fr; gap: 0; }
+    .reserve-btns { flex-direction: column; align-items: center; }
+
+    .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-nav { flex-wrap: wrap; justify-content: center; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">
+    <div class="logo-icon">🌿</div>
+    <div class="logo-text">
+      CAFÉ NOKA
+      <small>NUMATA CITY, GUNMA</small>
+    </div>
+  </a>
+  <nav>
+    <a href="#menu">Menu</a>
+    <a href="#concept">Concept</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#access">Access</a>
+    <a href="#reserve" class="nav-order">テイクアウト注文</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-left">
+    <div class="hero-plant">🌿</div>
+    <p class="hero-tag">Café Noka — 野花 — Numata, Gunma</p>
+    <h1 class="hero-title">
+      野の花のように、<br>
+      <em>ゆるやかに</em>
+    </h1>
+    <p class="hero-en">A slow cup, a quiet moment.</p>
+    <p class="hero-desc">
+      利根川沿いの小さなカフェ。地元農家から仕入れた旬の野菜や果物を使ったフードと、丁寧に淹れた一杯のコーヒーで、ゆったりとした時間をお届けします。
+    </p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-green">メニューを見る</a>
+      <a href="#access" class="btn-line">アクセス・営業時間</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-area">
+      <div class="img-block">
+        ☕
+        <span class="img-label">Specialty Coffee</span>
+      </div>
+      <div class="img-block">
+        🥐
+        <span class="img-label">Daily Baked</span>
+      </div>
+      <div class="img-block">
+        🌿
+        <span class="img-label">Local & Organic</span>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-item">
+        <span class="badge-num">8</span>
+        <span class="badge-label">Years Open<br>創業8年</span>
+      </div>
+      <div class="badge-item">
+        <span class="badge-num">地元</span>
+        <span class="badge-label">Farm Direct<br>農家直仕入れ</span>
+      </div>
+      <div class="badge-item">
+        <span class="badge-num">4.8</span>
+        <span class="badge-label">Google Review<br>お客様評価</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="inner">
+    <div class="menu-header">
+      <div>
+        <span class="tag">Menu</span>
+        <h2 class="section-title">丁寧につくる<br><em>一品</em>たち</h2>
+      </div>
+      <p class="section-lead">
+        地元農家から届く旬の食材をふんだんに使用。スペシャルティコーヒーは、豆の産地・焙煎にこだわり、毎朝ハンドドリップでご提供しています。
+      </p>
+    </div>
+    <div class="cat-tabs">
+      <div class="cat-tab active">すべて</div>
+      <div class="cat-tab">コーヒー</div>
+      <div class="cat-tab">フード</div>
+      <div class="cat-tab">スイーツ</div>
+      <div class="cat-tab">テイクアウト</div>
+    </div>
+    <div class="menu-cards">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          ☕
+          <span class="menu-tag">人気 No.1</span>
+        </div>
+        <div class="menu-card-body">
+          <span class="menu-card-cat">COFFEE</span>
+          <h3 class="menu-card-name">ハンドドリップ コーヒー</h3>
+          <p class="menu-card-desc">エチオピア・コスタリカなど季節ごとに変わる豆を、その日の気候に合わせて丁寧にドリップ。</p>
+          <p class="menu-card-price">¥620<small>（税込）</small></p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">🥗</div>
+        <div class="menu-card-body">
+          <span class="menu-card-cat">FOOD</span>
+          <h3 class="menu-card-name">地野菜のプレートランチ</h3>
+          <p class="menu-card-desc">沼田・利根地域の農家から届く旬の野菜をメインに。スープ・パン付き。内容は日替わりです。</p>
+          <p class="menu-card-price">¥1,280<small>（税込）</small></p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          🍰
+          <span class="menu-tag">本日のおすすめ</span>
+        </div>
+        <div class="menu-card-body">
+          <span class="menu-card-cat">SWEETS</span>
+          <h3 class="menu-card-name">季節のタルト</h3>
+          <p class="menu-card-desc">地元産のフルーツを使ったタルト。毎朝手づくりのため、売り切れ次第終了です。</p>
+          <p class="menu-card-price">¥680<small>（税込）</small></p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">🥐</div>
+        <div class="menu-card-body">
+          <span class="menu-card-cat">BAKED</span>
+          <h3 class="menu-card-name">自家製スコーン</h3>
+          <p class="menu-card-desc">バターをたっぷり使ったサクほろスコーン。クロテッドクリームとジャム添え。</p>
+          <p class="menu-card-price">¥480<small>（税込）</small></p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">🍵</div>
+        <div class="menu-card-body">
+          <span class="menu-card-cat">TEA</span>
+          <h3 class="menu-card-name">ハーブティー</h3>
+          <p class="menu-card-desc">庭で育てたフレッシュハーブをブレンド。リラックスタイムにぴったりの一杯です。</p>
+          <p class="menu-card-price">¥580<small>（税込）</small></p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">🧇</div>
+        <div class="menu-card-body">
+          <span class="menu-card-cat">MORNING</span>
+          <h3 class="menu-card-name">モーニングセット</h3>
+          <p class="menu-card-desc">トースト・ゆで卵・サラダ・コーヒーのセット。開店〜11:00までご注文いただけます。</p>
+          <p class="menu-card-price">¥780<small>（税込）</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept" id="concept">
+  <div class="inner">
+    <div class="concept-inner">
+      <div class="concept-blocks">
+        <div class="c-block">
+          <div class="c-icon">🌾</div>
+          <div>
+            <p class="c-title">地元農家と直接つながる</p>
+            <p class="c-body">沼田・利根地域の農家さんと顔の見える関係で、新鮮な食材を毎日仕入れています。</p>
+          </div>
+        </div>
+        <div class="c-block">
+          <div class="c-icon">☕</div>
+          <div>
+            <p class="c-title">スペシャルティコーヒー</p>
+            <p class="c-body">品質基準をクリアした豆のみを使用。自家焙煎にこだわっています。</p>
+          </div>
+        </div>
+        <div class="c-block">
+          <div class="c-icon">🏡</div>
+          <div>
+            <p class="c-title">居心地の良い空間</p>
+            <p class="c-body">ゆっくり本が読める席、お子様連れも大歓迎のスペースを用意しています。</p>
+          </div>
+        </div>
+      </div>
+      <div class="concept-text">
+        <span class="tag">Our Story</span>
+        <h2 class="section-title">野の花のように、<br><em>自然体</em>で</h2>
+        <p class="section-lead">
+          「野花（NOKA）」という名前は、この利根川沿いに咲く野の花からいただきました。派手ではないけれど、気づくと心がほっとする、そんな存在でありたいという想いです。
+        </p>
+        <div class="concept-points">
+          <div class="point">
+            <span class="point-num">01</span>
+            <div class="point-text">
+              <p class="point-title">食材はできるだけ地元から</p>
+              <p class="point-desc">沼田・利根地域の農家さんから直接仕入れることで、新鮮さと地域への還元を両立しています。</p>
+            </div>
+          </div>
+          <div class="point">
+            <span class="point-num">02</span>
+            <div class="point-text">
+              <p class="point-title">毎日手づくりのフードとスイーツ</p>
+              <p class="point-desc">スコーン・タルト・キッシュは毎朝その日の分だけ。売り切れたらおしまいというスタイルです。</p>
+            </div>
+          </div>
+          <div class="point">
+            <span class="point-num">03</span>
+            <div class="point-text">
+              <p class="point-title">地域の人が集まる場所に</p>
+              <p class="point-desc">一人読書でも、友人とのランチでも、お子様連れでも。誰でもくつろげる場所を目指しています。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <span class="tag">Gallery</span>
+    <h2 class="section-title">お店の雰囲気</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-cell">☕<span class="g-label">Coffee Corner</span></div>
+    <div class="g-cell">🪴<span class="g-label">Interior</span></div>
+    <div class="g-cell">🥗<span class="g-label">Plate Lunch</span></div>
+    <div class="g-cell">🌿<span class="g-label">Garden Seat</span></div>
+    <div class="g-cell">🍰<span class="g-label">Daily Sweets</span></div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="access" id="access">
+  <div class="inner">
+    <div class="access-inner">
+      <div>
+        <span class="tag">Access</span>
+        <h2 class="section-title">アクセス &<br><em>営業時間</em></h2>
+        <div class="access-rows">
+          <div class="access-row">
+            <span class="access-label">Address</span>
+            <span class="access-val">群馬県沼田市◯◯町X-X-X</span>
+          </div>
+          <div class="access-row">
+            <span class="access-label">Access</span>
+            <span class="access-val">JR上越線 沼田駅より徒歩10分<br>利根川沿い、◯◯橋のそば</span>
+          </div>
+          <div class="access-row">
+            <span class="access-label">Hours</span>
+            <span class="access-val">
+              月〜金　8:00〜18:00<br>
+              土日祝　8:00〜19:00
+            </span>
+          </div>
+          <div class="access-row">
+            <span class="access-label">Closed</span>
+            <span class="access-val">毎週水曜日</span>
+          </div>
+          <div class="access-row">
+            <span class="access-label">Tel</span>
+            <span class="access-val">0278-XX-XXXX</span>
+          </div>
+          <div class="access-row">
+            <span class="access-label">Parking</span>
+            <span class="access-val">店舗前 4台分無料</span>
+          </div>
+        </div>
+      </div>
+      <div class="map-box">
+        <span style="font-size:32px">📍</span>
+        <span>Googleマップ埋め込みエリア</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVE -->
+<section class="reserve" id="reserve">
+  <div class="reserve-inner">
+    <span class="tag">Takeout & Reserve</span>
+    <h2 class="section-title">テイクアウト・お問い合わせ</h2>
+    <p class="reserve-desc">
+      テイクアウトのご注文はお電話またはLINEにて承ります。団体のご予約・貸切のご相談もお気軽にどうぞ。
+    </p>
+    <div class="reserve-btns">
+      <a href="tel:0278000000" class="btn-white">📞 お電話で注文・予約</a>
+      <a href="#" class="btn-white-line">💬 LINEで問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      CAFÉ NOKA
+      <small>野花 — 群馬県沼田市 — Est. 2017</small>
+    </div>
+    <div class="footer-nav">
+      <a href="#menu">Menu</a>
+      <a href="#concept">Concept</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#access">Access</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 CAFÉ NOKA All Rights Reserved.</span>
+    <span>群馬県沼田市</span>
+  </div>
+</footer>
+
+</body>
+</html>
